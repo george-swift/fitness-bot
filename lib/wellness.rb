@@ -10,4 +10,32 @@ class WellnessTips
     - Side Planks
     - Pushups
   )
+
+  @lower_body = %(
+    Try to incorporate these in your next work-out session
+    - Squats
+    - Glutes Bridge
+    - Jumping Lunges
+    - Hip Lifts 
+    - Leg Press
+    - Romanian Deadlift
+    - Dumbbell Stepup
+  )
+
+  @tips_for_toning = %(
+    Try to include these in your dietary plan for desired results:
+    - Eat eggs 🥚, yolk 🍳 and all
+    - Eat fatty fish 🐟 They are a great source of high-quality protein and healthy fat
+    - Don’t smoke or do drugs, and only drink in moderation 🥃 🕰
+    - Lifting weights 🏋🏽 is one of the best things you can do to strengthen your muscles and improve your body composition.
+  )
+
+  @tips_for_weight_loss = %(
+    Try to include these in your dietary plan for desired results:
+    - Don’t drink sugar calories 🥤 
+    - Eat nuts 🥜 They can help you lose weight and may help fight type 2 diabetes and heart disease
+    - Avoid processed junk food 🥤❌
+    - Do some cardio to reduce belly fat 🏃🏽
+    - Get enough sleep 🛌 😴 Poor sleep is one of the strongest individual risk factors for weight gain and obesity
+  )
 end
