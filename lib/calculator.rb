@@ -1,10 +1,11 @@
+# :nodoc:
 class BMICalculator
   $find_bmi = []
 
   def body_mass_index
     height = $find_bmi[0]
     weight = $find_bmi[1]
-    return weight / (height ** 2)
+    weight / (height**2)
   end
 
   def check_bmi
@@ -15,7 +16,7 @@ class BMICalculator
       'the healthy weight range'
     elsif overweight_range.include? body_mass_index
       'the overweight range'
-    elsif obese_range.include? body_mass_index 
+    elsif obese_range.include? body_mass_index
       'the obese range'
     else
       'the underweight range'
