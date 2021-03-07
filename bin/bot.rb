@@ -53,6 +53,57 @@ Telegram::Bot::Client.run(token) do |bot|
                            text: "For more helpful tips, select either of the two options \n /Exercise \n /Nutrition")
       bot.api.send_message(chat_id: message.chat.id,
                            text: "Want to get started already? Select 'Stop' to end the prompts \n /stop")
+    when '/Nutrition'
+      bot.api.send_message(chat_id: message.chat.id,
+                           text: 'The best assessment to determine current overall fitness is the Body Mass Index(BMI)')
+      bot.api.send_message(chat_id: message.chat.id,
+                           text: 'Caution ⚠️: BMI is not used for muscle builders 💪🏽, long distance athletes 🏃🏼‍♀️,')
+      bot.api.send_message(chat_id: message.chat.id, text: 'pregnant women 🤰🏽, the elderly 👵🏽 or young children 👶🏽')
+      bot.api.send_message(chat_id: message.chat.id,
+                           text: 'To calculate your BMI, enter your height and weight in that order')
+      bot.api.send_message(chat_id: message.chat.id, text: "\n /Height \n /Weight")
+    when '/Height'
+      bot.api.send_message(chat_id: message.chat.id, text: 'Enter your height in meters')
+      bot.api.send_message(chat_id: message.chat.id, text: "Next select 'Weight' to enter your weight \n /Weight")
+    when '/Weight'
+      bot.api.send_message(chat_id: message.chat.id, text: 'Enter your weight in kilograms')
+      bot.api.send_message(chat_id: message.chat.id,
+                           text: "Next select 'Calculate' 🧮 to determine your Body Mass Index(BMI) \n /Calculate")
+    when '/Calculate'
+      calculator = BMICalculator.new
+      bot.api.send_message(chat_id: message.chat.id,
+                           text: "Your BMI is #{calculator.body_mass_index}.")
+      bot.api.send_message(chat_id: message.chat.id, text: "This is considered #{calculator.check_bmi}")
+      bot.api.send_message(chat_id: message.chat.id,
+                           text: "Select 'Tips' below 👇🏽 to get a list of wellness tips 📝 tailored for you \n /Tips")
+    when '/Tips'
+      bot.api.send_message(chat_id: message.chat.id,
+                           text: 'Here are some evidence-based nutritional tips curated just for you.')
+      bot.api.send_message(chat_id: message.chat.id,
+                           text: "Select the options below to check it out \n /Weightloss \n /Toning")
+    when '/Weightloss'
+      wellness = WellnessTips.new
+      bot.api.send_message(chat_id: message.chat.id, text: wellness.weight_loss.to_s)
+      sleep(3)
+      bot.api.send_message(chat_id: message.chat.id,
+                           text: "For more helpful tips, select from the options \n /Exercise \n /Nutrition \n /Toning")
+      sleep(3)
+      bot.api.send_message(chat_id: message.chat.id,
+                           text: "Want to get started already? Select 'Stop' to end the prompts \n /stop")
+    when '/Toning'
+      wellness = WellnessTips.new
+      bot.api.send_message(chat_id: message.chat.id, text: wellness.toning.to_s)
+      sleep(3)
+      bot.api.send_message(chat_id: message.chat.id,
+                           text: "For more tips, select from the options \n /Exercise \n /Nutrition \n /Weightloss")
+      sleep(3)
+      bot.api.send_message(chat_id: message.chat.id,
+                           text: "Want to get started already? Select 'Stop' to end the prompts \n /stop")
+    when '/stop'
+      bot.api.send_message(chat_id: message.chat.id, text: "See you later, #{message.from.first_name}",
+                           date: message.date)
+    else
+      $find_bmi.push(message.text.to_f)
     end
   end
 end
