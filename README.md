@@ -1,14 +1,13 @@
 # Telegram Fitness Bot with Ruby
 
+## Built With
+
+- Ruby
+
 > 
 
 ![screenshot](./assets/hello.png)
 ![screenshot](./assets/calc-bmi.png)
-![screenshot](./assets/result.png)
-
-## Built With
-
-- Ruby
 
 ## Getting Started 
 
