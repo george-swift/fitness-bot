@@ -41,11 +41,11 @@ class WellnessTips
     - Get enough sleep 🛌 😴 Poor sleep is a strong individual risk factors for weight gain and obesity
   )
 
-  def upper_body
+  def upper_body_exercise
     @@upper_body
   end
 
-  def lower_body
+  def lower_body_exercise
     @@lower_body
   end
 

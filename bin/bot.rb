@@ -30,7 +30,7 @@ Telegram::Bot::Client.run(token) do |bot|
       bot.api.send_message(chat_id: message.chat.id,
                            text: 'Not sure what to do at the gym? These exercises are a good, strong, starting point')
       sleep(1)
-      bot.api.send_message(chat_id: message.chat.id, text: exercises.upper_body.to_s)
+      bot.api.send_message(chat_id: message.chat.id, text: exercises.upper_body_exercise)
       sleep(0.5)
       bot.api.send_message(chat_id: message.chat.id,
                            text: "For more helpful tips, select either of the two options \n /Exercise \n /Nutrition")
@@ -47,7 +47,7 @@ Telegram::Bot::Client.run(token) do |bot|
       bot.api.send_message(chat_id: message.chat.id,
                            text: 'Below are the best bodyweight exercises for your lower body.')
       sleep(1)
-      bot.api.send_message(chat_id: message.chat.id, text: exercises.lower_body.to_s)
+      bot.api.send_message(chat_id: message.chat.id, text: exercises.lower_body_exercise.to_s)
       sleep(0.5)
       bot.api.send_message(chat_id: message.chat.id,
                            text: "For more helpful tips, select either of the two options \n /Exercise \n /Nutrition")
