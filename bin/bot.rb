@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop: disable Metrics/BlockLength, Style/GlobalVars
 require 'telegram/bot'
 require_relative '../lib/token'
 require_relative '../lib/calculator'
@@ -30,7 +31,7 @@ Telegram::Bot::Client.run(token) do |bot|
       bot.api.send_message(chat_id: message.chat.id,
                            text: 'Not sure what to do at the gym? These exercises are a good, strong, starting point')
       sleep(1)
-      bot.api.send_message(chat_id: message.chat.id, text: exercises.upper_body_exercise)
+      bot.api.send_message(chat_id: message.chat.id, text: exercises.upper_body.to_s)
       sleep(0.5)
       bot.api.send_message(chat_id: message.chat.id,
                            text: "For more helpful tips, select either of the two options \n /Exercise \n /Nutrition")
@@ -47,8 +48,7 @@ Telegram::Bot::Client.run(token) do |bot|
       bot.api.send_message(chat_id: message.chat.id,
                            text: 'Below are the best bodyweight exercises for your lower body.')
       sleep(1)
-      bot.api.send_message(chat_id: message.chat.id, text: exercises.lower_body_exercise.to_s)
-      sleep(0.5)
+      bot.api.send_message(chat_id: message.chat.id, text: exercises.lower_body.to_s)
       bot.api.send_message(chat_id: message.chat.id,
                            text: "For more helpful tips, select either of the two options \n /Exercise \n /Nutrition")
       bot.api.send_message(chat_id: message.chat.id,
@@ -70,10 +70,9 @@ Telegram::Bot::Client.run(token) do |bot|
       bot.api.send_message(chat_id: message.chat.id,
                            text: "Next select 'Calculate' 🧮 to determine your Body Mass Index(BMI) \n /Calculate")
     when '/Calculate'
-      calculator = BMICalculator.new
-      bot.api.send_message(chat_id: message.chat.id,
-                           text: "Your BMI is #{calculator.body_mass_index}.")
-      bot.api.send_message(chat_id: message.chat.id, text: "This is considered #{calculator.check_bmi}")
+      data = BMICalculator.new
+      bot.api.send_message(chat_id: message.chat.id, text: "Your BMI is #{data.bmi}.")
+      bot.api.send_message(chat_id: message.chat.id, text: "This is considered #{data.check_bmi}")
       bot.api.send_message(chat_id: message.chat.id,
                            text: "Select 'Tips' below 👇🏽 to get a list of wellness tips 📝 tailored for you \n /Tips")
     when '/Tips'
@@ -103,7 +102,8 @@ Telegram::Bot::Client.run(token) do |bot|
       bot.api.send_message(chat_id: message.chat.id, text: "See you later, #{message.from.first_name}",
                            date: message.date)
     else
-      $find_bmi.push(message.text.to_f)
+      $bmi_data.push(message.text.to_f)
     end
   end
 end
+# rubocop: enable Metrics/BlockLength, Style/GlobalVars

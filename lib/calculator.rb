@@ -1,25 +1,29 @@
+# frozen_string_literal: true
+
+# rubocop: disable Style/GlobalVars
 # :nodoc:
 class BMICalculator
-  $find_bmi = []
+  $bmi_data = []
 
-  def body_mass_index
-    height = $find_bmi[0]
-    weight = $find_bmi[1]
-    weight / (height**2)
+  def bmi
+    if $bmi_data.size.positive?
+      height = $bmi_data[0]
+      weight = $bmi_data[1]
+      weight / height**2
+    end
   end
 
   def check_bmi
-    healthy_range = 18.5..24.9
-    overweight_range = 25..29.9
-    obese_range = 30..39.9
-    if healthy_range.include? body_mass_index
+    case bmi
+    when 18.5..24.9
       'the healthy weight range'
-    elsif overweight_range.include? body_mass_index
+    when 25..29.9
       'the overweight range'
-    elsif obese_range.include? body_mass_index
+    when 30..39.9
       'the obese range'
     else
       'the underweight range'
     end
   end
 end
+# rubocop: enable Style/GlobalVars
