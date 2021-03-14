@@ -6,7 +6,7 @@
 
 > 
 
-![screenshot](./assets/first-promt.png)
+![screenshot](./assets/first-prompt.png)
 ![screenshot](./assets/bmi-prompt.png)
 
 ## Getting Started 
