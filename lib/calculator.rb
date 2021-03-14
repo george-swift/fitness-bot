@@ -8,6 +8,8 @@ class BMICalculator
       height = $bmi_data[0]
       weight = $bmi_data[1]
       weight / height**2
+    else
+      0
     end
   end
 
