@@ -6,8 +6,8 @@
 
 > 
 
-![screenshot](./assets/hello.png)
-![screenshot](./assets/calc-bmi.png)
+![screenshot](./assets/first-promt.png)
+![screenshot](./assets/bmi-prompt.png)
 
 ## Getting Started 
 
