@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # rubocop: disable Metrics/BlockLength, Style/GlobalVars
 require 'telegram/bot'
 require_relative '../lib/token'
